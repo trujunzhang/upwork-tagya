@@ -176,6 +176,9 @@ function scale(coord){
 // 460,100
 // 800,1280
 setPlayer = function (levelNo, hValue) {
+    var message = document.getElementsByTagName('html')[0].innerHTML;
+    alert(message);
+    
     var level = 'L' + levelNo;
     var p1pin = document.getElementById("p1pin");
     var coords = document.getElementById(level).getAttribute('coords');
@@ -184,7 +187,7 @@ setPlayer = function (levelNo, hValue) {
     var left = arr[0] - (p1pin.width / 2);
     var top = (parseInt(hValue) + parseInt(arr[1])) - p1pin.height;
 
-    alert("hvalue: " + hValue + "," + parseInt(hValue));
+    //alert("hvalue: " + hValue + "," + parseInt(hValue));
     //alert("left: " + left + "top: " + top);
     //var left = 100;
     //var top = 800;
