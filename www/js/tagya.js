@@ -7,21 +7,23 @@ bridge.registerListener("injectPlayerLevel", function (payload) {
     var levelNo = payload.levelNo;
     var hValue = getLevelHeight(levelNo);
     setPlayer(levelNo,hValue);
-    //alert("wanghao player: " + hValue);
 });
 
 
 setPlayer = function(levelNo,hValue){
-    //var level = 'L' + levelNo;
-    var p1pin = document.getElementById("p1pin");
-    //var coords = document.getElementById(level).getAttribute('coords');
-    //coords = coords.replace(" ", "");
-    //var arr = coords.split(",", 2);
-    //var left = arr[0] - (p1pin.width / 2);
-    //var top = (parseInt(hValue) + parseInt(arr[1])) - p1pin.height;
+    var level = 'L' + levelNo;
 
-    var left = 100;
-    var top = 800;
+    alert("level :"+ level);
+    var p1pin = document.getElementById("p1pin");
+    var coords = document.getElementById(level).getAttribute('coords');
+    coords = coords.replace(" ", "");
+    var arr = coords.split(",", 2);
+    var left = arr[0] - (p1pin.width / 2);
+    var top = (parseInt(hValue) + parseInt(arr[1])) - p1pin.height;
+
+    //alert("left: "+ arr[0]);
+    //var left = 100;
+    //var top = 800;
 
     p1pin.style.left = left + 'px';
     p1pin.style.top = top + 'px';

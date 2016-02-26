@@ -66,6 +66,11 @@ public class TagyaApp extends Application {
         // Integrating with Stetho is intended to be seamless and straightforward for most existing Android applications.
 //        Stetho.initializeWithDefaults(this);
 
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            WebView.setWebContentsDebuggingEnabled(true);
+        }
+
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
