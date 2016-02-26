@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:gravity="center"
+    android:orientation="vertical"
+    android:id="@id/lay_start"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textSize="20.0dip"
+        android:typeface="serif"
+        android:textColor="#ff000000"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:id="@id/game_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="65.0dip"
+        android:text="" />
+
+    <Button
+        android:textColor="#ffffffff"
+        android:id="@id/start_game"
+        android:background="@drawable/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5.0dip" />
+</LinearLayout>

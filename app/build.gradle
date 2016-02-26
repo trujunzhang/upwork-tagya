@@ -1,0 +1,162 @@
+apply plugin: 'com.android.application'
+
+final JavaVersion JAVA_VERSION = JavaVersion.VERSION_1_7
+if (JavaVersion.current() != JAVA_VERSION) {
+    throw new IllegalStateException("Incorrect Java Development Kit version; expected "
+            + JAVA_VERSION + " but found " + JavaVersion.current())
+}
+
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyy-MM-dd')
+    return formattedDate
+}
+
+def computeVersionName(label) {
+    return "2.1.${android.defaultConfig.versionCode}-${label}-${date}"
+}
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+    compileOptions {
+        sourceCompatibility = JAVA_VERSION
+        targetCompatibility = JAVA_VERSION
+    }
+    defaultConfig {
+        applicationId "vaiha.game.tagya"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testApplicationId 'tagya.game.vaiha.test'
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        test {
+            java.srcDirs += 'src/testlib/java'
+        }
+        androidTest {
+            java.srcDirs += 'src/testlib/java'
+        }
+    }
+
+    signingConfigs {
+        prod {
+        }
+        debug {
+        }
+    }
+
+//    productFlavors {
+//        dev {
+//            versionName computeVersionName("dev")
+//            applicationId 'vaiha.game.tagya.dev'
+//            signingConfig signingConfigs.debug
+//        }
+//        prod {
+//            versionName computeVersionName("r")
+//            signingConfig signingConfigs.prod
+//        }
+//        releasesprod {
+//            versionName computeVersionName("releasesprod")
+//            signingConfig signingConfigs.prod
+//        }
+//        alpha {
+//            versionName computeVersionName("alpha")
+//            applicationId 'vaiha.game.tagya.alpha'
+//            signingConfig signingConfigs.debug
+//        }
+//        beta {
+//            versionName computeVersionName("beta")
+//            applicationId 'vaiha.game.tagya.beta'
+//            signingConfig signingConfigs.prod
+//        }
+//    }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+        // required by Butter Knife
+
+        // For Espresso testing libraries. See http://stackoverflow.com/q/33800924/970346.
+        exclude 'META-INF/maven/com.google.guava/guava/pom.xml'
+        exclude 'META-INF/maven/com.google.guava/guava/pom.properties'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    String okHttpVersion = '2.7.2'
+    String supportVersion = '23.1.1'
+    String espressoVersion = '2.2.1'
+    String boltsVersion = '1.4.0'
+    String universalImageLoaderVersion = "1.9.5"
+    String socialauthVersion = "4.11"
+    String twitter4jVersion = "4.0.4"
+
+    compile "com.android.support:appcompat-v7:$supportVersion" // includes support-v4
+    compile "com.android.support:design:$supportVersion"
+    compile "com.android.support:recyclerview-v7:$supportVersion"
+//    compile "com.android.support:percent:$supportVersion"
+//    compile "com.android.support:palette-v7:$supportVersion"
+
+//    compile "com.parse.bolts:bolts-tasks:$boltsVersion"
+//    compile "com.parse.bolts:bolts-applinks:$boltsVersion"
+    // https://developers.facebook.com/docs/android/getting-started
+//    compile 'com.facebook.android:facebook-android-sdk:4.10.0'
+    // https://developers.google.com/android/guides/setup#Setup
+    // https://developers.google.com/cloud-messaging/android/client
+    compile 'com.google.android.gms:play-services:8.4.0'
+//    // https://developers.google.com/admob/android/quick-start
+    compile 'com.google.android.gms:play-services-ads:8.4.0'
+    compile "com.nostra13.universalimageloader:universal-image-loader:$universalImageLoaderVersion"
+    // http://mvnrepository.com/artifact/org.brickred/socialauth/4.12
+    // https://code.google.com/archive/p/socialauth/
+    // https://github.com/3pillarlabs/socialauth-android(used)
+//    compile "org.brickred:socialauth:$socialauthVersion"
+//    compile "org.brickred:socialauth:$socialauthVersion"
+    // https://dev.twitter.com/overview/documentation
+    // https://github.com/yusuke/twitter4j/(used)
+//    compile "org.twitter4j:twitter4j-core:$twitter4jVersion"
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.9.5'
+    testCompile 'org.robolectric:robolectric:3.0'
+    testCompile "com.squareup.okhttp:mockwebserver:$okHttpVersion"
+
+    // Required by Android JUnit Runner.
+    androidTestCompile "com.android.support:support-annotations:$supportVersion"
+
+    androidTestCompile 'com.android.support.test:rules:0.4.1' // JUnit Rules
+    androidTestCompile 'com.android.support.test:runner:0.4.1' // Android JUnit Runner
+    androidTestCompile "com.android.support.test.espresso:espresso-core:$espressoVersion"
+
+    // Espresso-contrib for DatePicker, RecyclerView, Drawer actions, Accessibility checks,
+    // CountingIdlingResource
+    androidTestCompile("com.android.support.test.espresso:espresso-contrib:$espressoVersion") {
+        // http://stackoverflow.com/questions/30578243/why-would-adding-espresso-contrib-cause-an-inflateexception
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+    }
+
+    // Espresso-web for WebView support
+    androidTestCompile "com.android.support.test.espresso:espresso-web:$espressoVersion"
+
+    // Espresso-idling-resource for synchronization with background jobs.
+    androidTestCompile "com.android.support.test.espresso:espresso-idling-resource:$espressoVersion"
+
+    androidTestCompile 'com.squareup.spoon:spoon-client:1.3.1'
+
+
+}

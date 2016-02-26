@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="top" android:orientation="vertical" android:id="@id/frame" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/banner" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="left" android:layout_gravity="left" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <Button android:background="@android:color/transparent" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawableEnd="@drawable/wings100" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="276.0dip" android:layout_height="wrap_content">
+                <Button android:background="@android:color/transparent" android:visibility="gone" android:layout_width="75.0dip" android:layout_height="75.0dip" android:drawableEnd="@drawable/boom_pur" />
+                <Button android:gravity="center" android:layout_gravity="center" android:id="@id/safety_purchase_click" android:background="@android:color/transparent" android:layout_width="100.0dip" android:layout_height="100.0dip" android:rotation="5.0" android:drawableStart="@drawable/wings100" />
+                <Button android:textSize="30.0dip" android:textColor="#ffffffff" android:background="@android:color/transparent" android:layout_width="75.0dip" android:layout_height="75.0dip" android:text="X 3" />
+            </LinearLayout>
+        </LinearLayout>
+        <Button android:typeface="serif" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/use_safety" android:background="@drawable/toast" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip" android:text="Use Safety Passes now" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+            <TextView android:textAppearance="?android:textAppearanceSmall" android:textSize="16.0dip" android:typeface="serif" android:textStyle="italic" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/safety_text" android:layout_width="279.0dip" android:layout_height="wrap_content" android:text="Purchase safety pass and use it to escape from tags when you're away!" android:maxLines="3" />
+        </LinearLayout>
+        <LinearLayout android:gravity="bottom|center" android:layout_gravity="bottom|center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+            <Button android:textSize="12.0dip" android:typeface="serif" android:textColor="#ffffffff" android:id="@id/safety_ok" android:background="@drawable/toast" android:layout_width="116.0dip" android:layout_height="wrap_content" android:text="OK" />
+            <Button android:textSize="12.0dip" android:typeface="serif" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/exit_safe" android:background="@drawable/toast" android:layout_width="126.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="CANCEL" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

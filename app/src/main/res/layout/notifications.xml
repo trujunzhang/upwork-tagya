@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:background="#fff455bb"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="#ffffffff"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Notifications" />
+
+    <View
+        android:background="@android:color/darker_gray"
+        android:layout_width="fill_parent"
+        android:layout_height="2.0dip" />
+
+    <TextView
+        android:textSize="18.0dip"
+        android:typeface="serif"
+        android:textColor="#ffffffff"
+        android:gravity="left"
+        android:layout_gravity="left"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5.0dip"
+        android:text="Game Requests:" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.0">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@id/game_req"
+            android:visibility="visible"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="15.0dip"
+                android:textColor="#ffffffff"
+                android:id="@id/game_name_notify"
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:textSize="18.0dip"
+        android:typeface="serif"
+        android:textColor="#ffffffff"
+        android:gravity="left"
+        android:layout_gravity="left"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5.0dip"
+        android:text="Tagged Games" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.0">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@id/tag_req"
+            android:visibility="visible"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="15.0dip"
+                android:textColor="#ffffffff"
+                android:id="@id/tag_name_notify"
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:textColor="#ffffffff"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@id/ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK" />
+</LinearLayout>

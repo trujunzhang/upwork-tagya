@@ -1,0 +1,130 @@
+package vaiha.game.tagya;
+
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
+
+//import com.facebook.AccessTokenTracker;
+//import com.facebook.CallbackManager;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+public class Friends_G extends AppCompatActivity {
+
+    public static String EXTRA_URL = "extra_url";
+    static final String FB = "fb";
+    static final String GAME_NAME = "game_name";
+    static final String PREF_KEY_TWITTER_LOGIN = "isTwitterLogedIn";
+    private static final int SELECT_PHOTO = 100;
+    static final String TAGYA_USER_ID = "tagya_id";
+    public static String creator = "no";
+    public static String game_name_create = "";
+    static String search = "0";
+    String MUSIC = "music";
+    private final String PENDING_ACTION_BUNDLE_KEY = "vaiha.game.tagya:PendingAction";
+    SharedPreferences Preferences_Music;
+//    AccessTokenn accessToken;
+//    AccessTokenTracker accessTokenTracker;
+//    SocialAuthAdapter adapter;
+//    AlertDialogManager alert = new AlertDialogManager();
+//    private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener(null);
+    Bitmap bitmap;
+//    private CallbackManager callbackManager;
+    CheckBox[] check = new CheckBox[1000];
+    private String count;
+    ArrayList<String> date_game = new ArrayList();
+    ArrayList<String> date_tag = new ArrayList();
+    View dialoglayout;
+    EditText ed;
+    EditText enterGame;
+    private String fb;
+    TextView fbname;
+    String friends_id = "";
+    String[] friendsid;
+    String[] friendslevel;
+//    ArrayList<Tagyafriends> friendslist;
+    String[] friendsname;
+    String[] friendstatus;
+    String[] frinedpicture;
+    Button frnd_fb;
+    String game_id;
+    ArrayList<String> game_name = new ArrayList();
+    int i;
+    String id_friend;
+    private String id_g;
+    ArrayList<String> ids = new ArrayList();
+    public ImageLoader imageLoad;
+    boolean isLoggedIn;
+    int j;
+    JSONArray json_s;
+    LinearLayout lay;
+    LinearLayout lay_fb;
+//    TagyaFriendsAdapter listadapter;
+    SharedPreferences mSharedPreferences;
+    LinearLayout main_lay;
+    String message;
+    ArrayList<String> messages = new ArrayList();
+    ArrayList<String> messages1 = new ArrayList();
+    MediaPlayer mp;
+    ToggleButton music_on;
+    String name;
+    private String name_str;
+    ArrayList<String> names = new ArrayList();
+    ArrayList<String> names1 = new ArrayList();
+    ArrayList<String> names2 = new ArrayList();
+    TextView notification;
+    String on;
+    DisplayImageOptions options;
+    LinearLayout.LayoutParams params;
+//    private PendingAction pendingAction = PendingAction.NONE;
+    Bitmap photo;
+    ArrayList<String> pics = new ArrayList();
+    ArrayList<String> pics_game = new ArrayList();
+    ArrayList<String> pics_tag = new ArrayList();
+    String prof;
+    JSONObject profile;
+    String response;
+    String response_s;
+    ImageView[] s = new ImageView[1000];
+    EditText search_b;
+//    ServiceClass service = new ServiceClass();
+//    ServiceClass serviceClass = new ServiceClass();
+    String status;
+    String status_unfriend = "failure";
+    LinearLayout[] sub = new LinearLayout[1000];
+    ArrayList<String> tag_name = new ArrayList();
+    LinearLayout tem;
+    private String temp_name_game;
+    TextView text;
+    Toast toast = null;
+    TextView twtname;
+    Button[] unfriend = new Button[1000];
+    String unique_id;
+    ArrayList<String> uniqueids = new ArrayList();
+    ImageView user_image_view;
+    TextView user_name;
+    String user_type;
+    View v;
+    ArrayList<String> world_levels = new ArrayList();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+}

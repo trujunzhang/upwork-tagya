@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:gravity="bottom"
+    android:layout_gravity="bottom"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@drawable/road"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="0.5">
+
+        <ImageView
+            android:layout_gravity="top|right|center"
+            android:id="@id/smiley_blu2"
+            android:layout_width="55.0dip"
+            android:layout_height="55.0dip"
+            android:layout_marginRight="25.0dip"
+            android:src="@drawable/smilyblue2"
+            android:layout_weight="1.0" />
+
+        <ImageView
+            android:layout_gravity="left"
+            android:id="@id/smiley_blue1"
+            android:layout_width="75.0dip"
+            android:layout_height="75.0dip"
+            android:src="@drawable/smilyblue"
+            android:layout_weight="1.0" />
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="250.0dip"
+            android:layout_height="250.0dip"
+            android:src="@drawable/reflect" />
+    </LinearLayout>
+
+    <include layout="@layout/home_buttons"/>
+
+</LinearLayout>

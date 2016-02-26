@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_google_play_services_notification_ticker">Pogreška Usluga za Google Play</string>
+    <string name="common_google_play_services_notification_needs_installation_title">Aplikacija zahtijeva instaliranje Usluga za Google Play.</string>
+    <string name="common_google_play_services_notification_needs_update_title">Aplikacija zahtijeva ažuriranje Usluga za Google Play.</string>
+    <string name="common_android_wear_notification_needs_update_text">Aplikacija zahtijeva ažuriranje na aplikaciju Android Wear.</string>
+    <string name="common_google_play_services_needs_enabling_title">Aplikacija zahtijeva da Usluge za Google Play budu omogućene.</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">Zahtijeva aplikacija %1$s</string>
+    <string name="common_google_play_services_install_title">Preuzmi usluge za Google Play</string>
+    <string name="common_google_play_services_install_text_phone">Ova aplikacija neće funkcionirati bez usluga za Google Play, koje nisu instalirane na vašem telefonu.</string>
+    <string name="common_google_play_services_install_text_tablet">Ova aplikacija neće funkcionirati bez usluga za Google Play, koje nisu instalirane na vašem tabletnom računalu.</string>
+    <string name="common_google_play_services_install_button">Preuzmi usluge za Google Play</string>
+    <string name="common_google_play_services_enable_title">Omogući usluge za Google Play</string>
+    <string name="common_google_play_services_enable_text">Ova aplikacija neće raditi ako ne omogućite usluge za Google Play.</string>
+    <string name="common_google_play_services_enable_button">Omogući usluge za Google Play</string>
+    <string name="common_google_play_services_update_title">Ažuriraj usluge za Google Play</string>
+    <string name="common_android_wear_update_title">Ažurirajte Android Wear</string>
+    <string name="common_google_play_services_update_text">Ova se aplikacija neće pokrenuti ako ne ažurirate usluge za Google Play.</string>
+    <string name="common_android_wear_update_text">Ova aplikacija neće funkcionirati ako ne ažurirate aplikaciju Android Wear.</string>
+    <string name="common_google_play_services_network_error_title">Mrežna pogreška</string>
+    <string name="common_google_play_services_network_error_text">Potrebna je podatkovna veza za povezivanje s uslugama Google Play.</string>
+    <string name="common_google_play_services_invalid_account_title">Nevažeći račun</string>
+    <string name="common_google_play_services_invalid_account_text">Navedeni račun ne postoji na ovom uređaju. Odaberite neki drugi račun.</string>
+    <string name="common_google_play_services_unknown_issue">Nepoznata poteškoća s uslugama za Google Play.</string>
+    <string name="common_google_play_services_unsupported_title">Usluge za Google Play</string>
+    <string name="common_google_play_services_unsupported_text">Usluge za Google Play, koje su potrebne za funkcioniranje nekih vaših aplikacija, nisu podržane na vašem uređaju. Pomoć potražite od proizvođača.</string>
+    <string name="common_google_play_services_update_button">Ažuriranje</string>
+    <string name="common_signin_button_text">Prijava</string>
+    <string name="common_signin_button_text_long">Prijava uslugom Google</string>
+    <string name="common_open_on_phone">Otvaranje na telefonu</string>
+    <string name="com_facebook_like_button_not_liked">Sviđa mi se</string>
+    <string name="com_facebook_like_button_liked">Označeno sa sviđa mi se</string>
+    <string name="com_facebook_loginview_log_out_button">Odjavi se</string>
+    <string name="com_facebook_loginview_log_in_button">Prijavi se</string>
+    <string name="com_facebook_loginview_log_in_button_long">Prijava putem Facebooka</string>
+    <string name="com_facebook_loginview_logged_in_as">Prijavljen kao: %1$s</string>
+    <string name="com_facebook_loginview_logged_in_using_facebook">Prijavljen putem Facebooka</string>
+    <string name="com_facebook_loginview_log_out_action">Odjavi se</string>
+    <string name="com_facebook_loginview_cancel_action">Odustani</string>
+    <string name="com_facebook_loading">Učitavanje u tijeku…</string>
+    <string name="com_facebook_internet_permission_error_title">Pogreška datoteke AndroidManifest</string>
+    <string name="com_facebook_internet_permission_error_message">Za prijavu u aplikaciju WebView potrebna je dozvola INTERNET</string>
+    <string name="com_facebook_tooltip_default">Novo! Vi odlučujete – odaberite koje informacije želite podijeliti u aplikacijama.</string>
+    <string name="com_facebook_image_download_unknown_error">Prilikom preuzimanja slike došlo je do neočekivane pogreške.</string>
+    <string name="com_facebook_share_button_text">Dijeli</string>
+    <string name="com_facebook_send_button_text">Pošalji</string>
+</resources>

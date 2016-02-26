@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="top" android:orientation="vertical" android:id="@id/frame" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/banner" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="left" android:layout_gravity="left" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <Button android:background="@android:color/transparent" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="276.0dip" android:layout_height="wrap_content">
+                <Button android:background="@android:color/transparent" android:visibility="gone" android:layout_width="75.0dip" android:layout_height="75.0dip" />
+                <Button android:gravity="center" android:layout_gravity="center" android:id="@id/life_purchase_click" android:background="@android:color/transparent" android:layout_width="100.0dip" android:layout_height="100.0dip" android:rotation="5.0" />
+                <Button android:textSize="30.0dip" android:textColor="#ffffffff" android:background="@android:color/transparent" android:layout_width="75.0dip" android:layout_height="75.0dip" android:text="X 3" />
+            </LinearLayout>
+        </LinearLayout>
+        <Button android:textSize="12.0dip" android:typeface="serif" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/use_life" android:background="@drawable/toast" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip" android:text="Use Life now" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="16.0dip" android:typeface="serif" android:textStyle="bold|italic" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/life_text" android:layout_width="279.0dip" android:layout_height="wrap_content" android:text="Live Longer! \n \n Stay in the Game and Win" android:maxLines="3" />
+        </LinearLayout>
+        <LinearLayout android:gravity="bottom|center" android:layout_gravity="bottom|center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="35.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="35.0dip" android:layout_marginBottom="15.0dip">
+            <Button android:textSize="12.0dip" android:typeface="serif" android:textColor="#ffffffff" android:id="@id/life_ok" android:background="@drawable/toast" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="OK" android:layout_weight="1.0" />
+            <Button android:textSize="12.0dip" android:typeface="serif" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/life_exit" android:background="@drawable/toast" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="CANCEL" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

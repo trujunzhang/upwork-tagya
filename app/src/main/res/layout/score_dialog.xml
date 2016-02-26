@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:gravity="top"
+    android:layout_gravity="top"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textSize="18.0dip"
+        android:typeface="serif"
+        android:gravity="center"
+        android:id="@id/user_dialog"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip">
+
+        <TextView
+            android:textSize="18.0dip"
+            android:typeface="serif"
+            android:id="@id/textView3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Points Scored:"
+            android:layout_weight="1.0" />
+
+        <TextView
+            android:textSize="18.0dip"
+            android:typeface="serif"
+            android:id="@id/points"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_weight="1.0" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip">
+
+        <TextView
+            android:textSize="18.0dip"
+            android:typeface="serif"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="World Level:"
+            android:layout_weight="1.0" />
+
+        <TextView
+            android:textSize="18.0dip"
+            android:typeface="serif"
+            android:id="@id/world_level_score"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

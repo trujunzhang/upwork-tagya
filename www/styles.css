@@ -1,0 +1,27 @@
+body {
+    margin: 0em;
+    padding: 0em;
+}
+
+img {
+    margin: 0em;
+    padding: 0em;
+    display: block;
+    width: 100%;
+}
+
+#outer {
+    position: relative;
+}
+
+/*p1img, p2img, p3img, p4img, p5img, p6img, p7img {*/
+    /*!*#p1img, #p2img, #p3img, #p4img, #p5img, #p6img, #p7img {*!*/
+    /*position: absolute;*/
+/*}*/
+
+#p1pin {
+    position: absolute;
+    z-index: 2;
+    width: 40px;
+    border: 60%
+}

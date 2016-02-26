@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@id/twitter"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:typeface="serif"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Friends using Tagya"
+                android:layout_weight="1.0" />
+
+            <Button
+                android:textColor="#ff45cdef"
+                android:id="@id/twitter_invite"
+                android:background="@drawable/box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3.0dip"
+                android:text="Invite"
+                android:onClick="InviteTwitter" />
+        </LinearLayout>
+
+        <View
+            android:background="@android:color/darker_gray"
+            android:layout_width="fill_parent"
+            android:layout_height="2.0dip" />
+
+        <TextView
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:id="@id/no_friends_found"
+            android:visibility="gone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="No Friends Found"
+            android:layout_weight="1.0" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@id/tagya_twitter"
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip" />
+        </ScrollView>
+
+        <ListView
+            android:id="@id/friendlist"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <View
+        android:background="#ff000000"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="3.0dip" />
+
+    <TextView
+        android:typeface="serif"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Invite Friends" />
+
+    <ScrollView
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.0">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@id/all_friends"
+            android:visibility="gone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+</LinearLayout>
