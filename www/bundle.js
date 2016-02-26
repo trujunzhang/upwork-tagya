@@ -1,4 +1,33 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+
+var cachedAreaCoordsArray = [
+    ["501,125,0", "84,1088,25", "226,1003,27", "335,972,24", "465,953,26", "572,921,26", "575,839,28", "480,766,26", "369,744,27", "246,728,28", "138,682,29", "165,601,27", "274,549,28", "375,495,29", "345,412,27", "239,382,31", "153,337,29", "153,262,29", "246,223,29", "343,207,29", "438,183,31", "498,123,34"],
+];
+
+function resizeMap() {
+    function resizeAreaTag(cachedAreaCoords,idx){
+        function scale(coord){
+            var dimension = ( 1 === (isWidth = 1-isWidth) ? 'width' : 'height' );
+            return Math.floor(Number(coord) * scallingFactor[dimension]);
+        }
+
+        var isWidth = 0;
+
+        //areas[idx].coords = cachedAreaCoords.split(',').map(scale).join(',');
+    }
+
+    var scallingFactor = {
+        width  : image.width  / image.naturalWidth,
+        height : image.height / image.naturalHeight
+    };
+
+    cachedAreaCoordsArray.forEach(resizeAreaTag);
+}
+
+module.exports = {
+    addStyleLink: resizeMap
+};
+},{}],2:[function(require,module,exports){
 function Bridge() {
 }
 
@@ -36,7 +65,7 @@ module.exports = new Bridge();
 window.onload = function() {
     module.exports.sendMessage( "DOMLoaded", {} );
 };
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 var bridge = require("./bridge");
 
 function addStyleLink(href) {
@@ -59,7 +88,7 @@ bridge.registerListener("injectStyles", function (payload) {
 module.exports = {
     addStyleLink: addStyleLink
 };
-},{"./bridge":1}],3:[function(require,module,exports){
+},{"./bridge":2}],4:[function(require,module,exports){
 var bridge = require( "./bridge" );
 var transformer = require("./transformer");
 
@@ -113,7 +142,7 @@ bridge.registerListener( "setDecorOffset", function( payload ) {
     transformer.setDecorOffset(payload.offset);
 } );
 
-},{"./bridge":1,"./transformer":5}],4:[function(require,module,exports){
+},{"./bridge":2,"./transformer":6}],5:[function(require,module,exports){
 var bridge = require("./bridge");
 
 function Tagya() {
@@ -122,10 +151,30 @@ function Tagya() {
 bridge.registerListener("injectPlayerLevel", function (payload) {
     var levelNo = payload.levelNo;
     var hValue = getLevelHeight(levelNo);
-    setPlayer(levelNo, hValue);
+    //setPlayer(levelNo, hValue);
+
+    debugImage();
 });
 
+debugImage = function(){
+    var image = document.getElementById("p1img");
 
+    var scallingFactor = {
+        width  : image.width  / image.naturalWidth,
+        height : image.height / image.naturalHeight
+    };
+
+    scale(460,100);
+
+};
+
+function scale(coord){
+    var dimension = ( 1 === (isWidth = 1-isWidth) ? 'width' : 'height' );
+    return Math.floor(Number(coord) * scallingFactor[dimension]);
+}
+
+// 460,100
+// 800,1280
 setPlayer = function (levelNo, hValue) {
     var level = 'L' + levelNo;
     var p1pin = document.getElementById("p1pin");
@@ -188,7 +237,7 @@ getLevelHeight = function (levelNo) {
 
 module.exports = new Tagya();
 
-},{"./bridge":1}],5:[function(require,module,exports){
+},{"./bridge":2}],6:[function(require,module,exports){
 function Transformer() {
 }
 
@@ -219,4 +268,4 @@ Transformer.prototype.setDecorOffset = function(offset) {
 };
 
 module.exports = new Transformer();
-},{}]},{},[1,3,4,2,5]);
+},{}]},{},[2,4,5,3,6,1]);
