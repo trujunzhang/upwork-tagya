@@ -6,10 +6,30 @@ function Tagya() {
 bridge.registerListener("injectPlayerLevel", function (payload) {
     var levelNo = payload.levelNo;
     var hValue = getLevelHeight(levelNo);
-    setPlayer(levelNo, hValue);
+    //setPlayer(levelNo, hValue);
+
+    debugImage();
 });
 
+debugImage = function(){
+    var image = document.getElementById("p1img");
 
+    var scallingFactor = {
+        width  : image.width  / image.naturalWidth,
+        height : image.height / image.naturalHeight
+    };
+
+    scale(460,100);
+
+};
+
+function scale(coord){
+    var dimension = ( 1 === (isWidth = 1-isWidth) ? 'width' : 'height' );
+    return Math.floor(Number(coord) * scallingFactor[dimension]);
+}
+
+// 460,100
+// 800,1280
 setPlayer = function (levelNo, hValue) {
     var level = 'L' + levelNo;
     var p1pin = document.getElementById("p1pin");

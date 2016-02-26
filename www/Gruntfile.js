@@ -5,6 +5,7 @@ module.exports = function (grunt) {
         "js/tagya.js",
         "js/loader.js",
         "js/transformer.js",
+        "js/MapCoordsResizer.js",
         //"js/imageMapResizer.js"
     ];
     var allHTMLFiles = [
@@ -28,6 +29,7 @@ module.exports = function (grunt) {
                         "js/tagya.js",
                         "js/loader.js",
                         "js/transformer.js",
+                        "js/MapCoordsResizer.js",
                         //"js/imageMapResizer.js",
                     ]
                 }
