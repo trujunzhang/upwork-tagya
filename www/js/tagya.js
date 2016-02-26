@@ -6,9 +6,9 @@ function Tagya() {
 bridge.registerListener("injectPlayerLevel", function (payload) {
     var levelNo = payload.levelNo;
     var hValue = getLevelHeight(levelNo);
-    //setPlayer(levelNo, hValue);
+    setPlayer(levelNo, hValue);
 
-    debugImage();
+    //debugImage();
 });
 
 debugImage = function(){

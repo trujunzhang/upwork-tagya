@@ -151,9 +151,9 @@ function Tagya() {
 bridge.registerListener("injectPlayerLevel", function (payload) {
     var levelNo = payload.levelNo;
     var hValue = getLevelHeight(levelNo);
-    //setPlayer(levelNo, hValue);
+    setPlayer(levelNo, hValue);
 
-    debugImage();
+    //debugImage();
 });
 
 debugImage = function(){
@@ -178,7 +178,7 @@ function scale(coord){
 setPlayer = function (levelNo, hValue) {
     var message = document.getElementsByTagName('html')[0].innerHTML;
     alert(message);
-    
+
     var level = 'L' + levelNo;
     var p1pin = document.getElementById("p1pin");
     var coords = document.getElementById(level).getAttribute('coords');
