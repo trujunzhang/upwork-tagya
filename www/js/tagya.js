@@ -1,5 +1,4 @@
 var bridge = require("./bridge");
-var mapCoordsResizer = require("./MapCoordsResizer");
 
 function Tagya() {
 }
@@ -32,11 +31,7 @@ function scale(coord){
 // 460,100
 // 800,1280
 setPlayer = function (levelNo, hValue) {
-
-    mapCoordsResizer.imageMapResize();
-
     var message = document.getElementsByTagName('html')[0].innerHTML;
-    //console.log(message);
     alert(message);
 
     var level = 'L' + levelNo;

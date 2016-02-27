@@ -1,3 +1,5 @@
+var mapCoordsResizer = require("./MapCoordsResizer");
+
 function Bridge() {
 }
 
@@ -33,5 +35,6 @@ Bridge.prototype.sendMessage = function( messageType, payload ) {
 module.exports = new Bridge();
 // FIXME: Move this to somewhere else, eh?
 window.onload = function() {
+    mapCoordsResizer.imageMapResize();
     module.exports.sendMessage( "DOMLoaded", {} );
 };
