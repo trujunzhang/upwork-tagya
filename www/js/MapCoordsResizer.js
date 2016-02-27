@@ -1,3 +1,5 @@
+var bridge = require( "./bridge" );
+
 function scaleImageMap() {
 
     function resizeMap() {
@@ -106,8 +108,36 @@ function imageMapResize() {
         //console.log(entry.tagName);
         scaleImageMap.call(entry);
     });
+
+    var message = document.getElementsByTagName('html')[0].innerHTML;
+    alert(message);
+
+    function sendMessaage(){
+        bridge.sendMessage( "DOMLoaded", {} );
+    }
+    //setTimeout(sendMessaage, 1250);
 }
 
 module.exports = {
     imageMapResize: imageMapResize
 };
+
+// FIXME: Move this to somewhere else, eh?
+window.onload = function() { // step1
+    bridge.sendMessage( "DOMLoaded", {} );
+};
+
+window.onpageshow = function(){ // step2
+};
+
+window.onresize = function(){// step3
+    setTimeout(imageMapResize, 1250);
+};
+
+
+
+
+
+
+
+

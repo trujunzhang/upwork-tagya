@@ -1,4 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var bridge = require( "./bridge" );
+
 function scaleImageMap() {
 
     function resizeMap() {
@@ -107,12 +109,42 @@ function imageMapResize() {
         //console.log(entry.tagName);
         scaleImageMap.call(entry);
     });
+
+    var message = document.getElementsByTagName('html')[0].innerHTML;
+    alert(message);
+
+    function sendMessaage(){
+        bridge.sendMessage( "DOMLoaded", {} );
+    }
+    //setTimeout(sendMessaage, 1250);
 }
 
 module.exports = {
     imageMapResize: imageMapResize
 };
-},{}],2:[function(require,module,exports){
+
+// FIXME: Move this to somewhere else, eh?
+window.onload = function() { // step1
+    console.log("window onload");
+    bridge.sendMessage( "DOMLoaded", {} );
+};
+
+window.onresize = function(){// step3
+    console.log("window onresize");
+    setTimeout(imageMapResize, 1250);
+};
+
+window.onpageshow = function(){ // step2
+    console.log("window onpageshow");
+};
+
+
+
+
+
+
+
+},{"./bridge":2}],2:[function(require,module,exports){
 function Bridge() {
 }
 
@@ -146,10 +178,12 @@ Bridge.prototype.sendMessage = function( messageType, payload ) {
 };
 
 module.exports = new Bridge();
-// FIXME: Move this to somewhere else, eh?
-window.onload = function() {
-    module.exports.sendMessage( "DOMLoaded", {} );
-};
+
+//// FIXME: Move this to somewhere else, eh?
+//window.onload = function() {
+//    mapCoordsResizer.imageMapResize();
+//    module.exports.sendMessage( "DOMLoaded", {} );
+//};
 },{}],3:[function(require,module,exports){
 var bridge = require("./bridge");
 
@@ -229,15 +263,14 @@ bridge.registerListener( "setDecorOffset", function( payload ) {
 
 },{"./bridge":2,"./transformer":6}],5:[function(require,module,exports){
 var bridge = require("./bridge");
-var mapCoordsResizer = require("./MapCoordsResizer");
 
 function Tagya() {
 }
 
 bridge.registerListener("injectPlayerLevel", function (payload) {
-    var levelNo = payload.levelNo;
-    var hValue = getLevelHeight(levelNo);
-    setPlayer(levelNo, hValue);
+    //var levelNo = payload.levelNo;
+    //var hValue = getLevelHeight(levelNo);
+    //setPlayer(levelNo, hValue);
 
     //debugImage();
 });
@@ -262,12 +295,8 @@ function scale(coord){
 // 460,100
 // 800,1280
 setPlayer = function (levelNo, hValue) {
-
-    mapCoordsResizer.imageMapResize();
-
-    var message = document.getElementsByTagName('html')[0].innerHTML;
-    //console.log(message);
-    alert(message);
+    //var message = document.getElementsByTagName('html')[0].innerHTML;
+    //alert(message);
 
     var level = 'L' + levelNo;
     var p1pin = document.getElementById("p1pin");
@@ -330,7 +359,7 @@ getLevelHeight = function (levelNo) {
 
 module.exports = new Tagya();
 
-},{"./MapCoordsResizer":1,"./bridge":2}],6:[function(require,module,exports){
+},{"./bridge":2}],6:[function(require,module,exports){
 function Transformer() {
 }
 
