@@ -62,7 +62,7 @@ function scaleImageMap() {
 
     if (!beenHere()) {
         setup();
-        console.log("areas's length: " + areas.length);
+        //console.log("areas's length: " + areas.length);
         //addEventListeners();
         start();
     } else {
@@ -104,7 +104,7 @@ function imageMapResize() {
     //this.filter(maps).each(scaleImageMap).end();
     //maps.map(factory);
     Array.prototype.slice.call(maps).forEach(function (entry) {
-        console.log(entry.tagName);
+        //console.log(entry.tagName);
         scaleImageMap.call(entry);
     });
 }
@@ -266,8 +266,8 @@ setPlayer = function (levelNo, hValue) {
     mapCoordsResizer.imageMapResize();
 
     var message = document.getElementsByTagName('html')[0].innerHTML;
-    console.log(message);
-    //alert(message);
+    //console.log(message);
+    alert(message);
 
     var level = 'L' + levelNo;
     var p1pin = document.getElementById("p1pin");
