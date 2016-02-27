@@ -33,7 +33,9 @@ function scale(coord){
 // 460,100
 // 800,1280
 setPlayer = function (levelNo, hValue) {
-    //var message = mapCoordsResizer.getCurrentImage();
+
+    mapCoordsResizer.scaleImageMap();
+
     var message = document.getElementsByTagName('html')[0].innerHTML;
     alert(message);
 
