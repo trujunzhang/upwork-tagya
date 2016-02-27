@@ -1,27 +1,72 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+function scaleImageMap(){
 
-var cachedAreaCoordsArray = [
-    ["501,125,0", "84,1088,25", "226,1003,27", "335,972,24", "465,953,26", "572,921,26", "575,839,28", "480,766,26", "369,744,27", "246,728,28", "138,682,29", "165,601,27", "274,549,28", "375,495,29", "345,412,27", "239,382,31", "153,337,29", "153,262,29", "246,223,29", "343,207,29", "438,183,31", "498,123,34"],
-];
+    function resizeMap() {
+        function resizeAreaTag(cachedAreaCoords,idx){
+            function scale(coord){
+                var dimension = ( 1 === (isWidth = 1-isWidth) ? 'width' : 'height' );
+                return Math.floor(Number(coord) * scallingFactor[dimension]);
+            }
 
-function resizeMap() {
-    function resizeAreaTag(cachedAreaCoords,idx){
-        function scale(coord){
-            var dimension = ( 1 === (isWidth = 1-isWidth) ? 'width' : 'height' );
-            return Math.floor(Number(coord) * scallingFactor[dimension]);
+            var isWidth = 0;
+
+            areas[idx].coords = cachedAreaCoords.split(',').map(scale).join(',');
         }
 
-        var isWidth = 0;
+        var scallingFactor = {
+            width  : image.width  / image.naturalWidth,
+            height : image.height / image.naturalHeight
+        };
 
-        //areas[idx].coords = cachedAreaCoords.split(',').map(scale).join(',');
+        cachedAreaCoordsArray.forEach(resizeAreaTag);
     }
 
-    var scallingFactor = {
-        width  : image.width  / image.naturalWidth,
-        height : image.height / image.naturalHeight
-    };
+    function getCoords(e){
+        //Normalize coord-string to csv format without any space chars
+        return e.coords.replace(/ *, */g,',').replace(/ +/g,',');
+    }
 
-    cachedAreaCoordsArray.forEach(resizeAreaTag);
+    function debounce() {
+        clearTimeout(timer);
+        timer = setTimeout(resizeMap, 250);
+    }
+
+    function start(){
+        if ((image.width !== image.naturalWidth) || (image.height !== image.naturalHeight)) {
+            resizeMap();
+        }
+    }
+
+    //function addEventListeners(){
+    //    image.addEventListener('onload',  resizeMap, false); //Detect late image loads in IE11
+    //    window.addEventListener('focus',  resizeMap, false); //Cope with window being resized whilst on another tab
+    //    window.addEventListener('resize', debounce,  false);
+    //    document.addEventListener('fullscreenchange', resizeMap,  false);
+    //}
+
+    function beenHere(){
+        return ('function' === typeof map._resize);
+    }
+
+    function setup(){
+        areas                 = map.getElementsByTagName('area');
+        cachedAreaCoordsArray = Array.prototype.map.call(areas, getCoords);
+        image                 = document.querySelector('img[usemap="#'+map.name+'"]');
+        map._resize           = resizeMap; //Bind resize method to HTML map element
+    }
+
+    var
+    /*jshint validthis:true */
+        map   = this,
+        areas = null, cachedAreaCoordsArray = null, image = null, timer = null;
+
+    if (!beenHere()){
+        setup();
+        //addEventListeners();
+        start();
+    } else {
+        map._resize(); //Already setup, so just resize map
+    }
 }
 
 function getCurrentImage(){
@@ -29,7 +74,7 @@ function getCurrentImage(){
 }
 
 module.exports = {
-    addStyleLink: resizeMap,
+    scaleImageMap: scaleImageMap,
     getCurrentImage: getCurrentImage
 };
 },{}],2:[function(require,module,exports){
@@ -308,9 +353,12 @@ function scale(coord){
 // 460,100
 // 800,1280
 setPlayer = function (levelNo, hValue) {
-    var message = mapCoordsResizer.getCurrentImage();
-    //var message = document.getElementsByTagName('html')[0].innerHTML;
-    alert(message);
+
+    mapCoordsResizer.scaleImageMap();
+
+    var message = document.getElementsByTagName('html')[0].innerHTML;
+    console.log(message);
+    //alert(message);
 
     var level = 'L' + levelNo;
     var p1pin = document.getElementById("p1pin");

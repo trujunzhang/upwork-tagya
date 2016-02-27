@@ -37,7 +37,8 @@ setPlayer = function (levelNo, hValue) {
     mapCoordsResizer.scaleImageMap();
 
     var message = document.getElementsByTagName('html')[0].innerHTML;
-    alert(message);
+    console.log(message);
+    //alert(message);
 
     var level = 'L' + levelNo;
     var p1pin = document.getElementById("p1pin");
