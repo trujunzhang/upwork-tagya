@@ -72,7 +72,7 @@ public class CommunicationBridge {
             public void onMessage(String messageType, JSONObject messagePayload) {
                 JSONObject wrapper = new JSONObject();
                 try {
-                    wrapper.put("levelNo", "180");
+                    wrapper.put("levelNo", "200");
                     CommunicationBridge.this.sendMessage("injectPlayerLevel", wrapper);
                 } catch (JSONException e) {
                     L.logRemoteErrorIfProd(e);

@@ -291,8 +291,8 @@ function scale(coord){
 // 460,100
 // 800,1280
 setPlayer = function (levelNo, hValue) {
-    var message = document.getElementsByTagName('html')[0].innerHTML;
-    alert(message);
+    //var message = document.getElementsByTagName('html')[0].innerHTML;
+    //alert(message);
 
     var level = 'L' + levelNo;
     var p1pin = document.getElementById("p1pin");
