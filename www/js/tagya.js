@@ -33,7 +33,7 @@ function scale(coord){
 // 800,1280
 setPlayer = function (levelNo, hValue) {
 
-    mapCoordsResizer.scaleImageMap();
+    mapCoordsResizer.imageMapResize();
 
     var message = document.getElementsByTagName('html')[0].innerHTML;
     console.log(message);

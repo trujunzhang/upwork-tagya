@@ -1,9 +1,9 @@
-function scaleImageMap(){
+function scaleImageMap() {
 
     function resizeMap() {
-        function resizeAreaTag(cachedAreaCoords,idx){
-            function scale(coord){
-                var dimension = ( 1 === (isWidth = 1-isWidth) ? 'width' : 'height' );
+        function resizeAreaTag(cachedAreaCoords, idx) {
+            function scale(coord) {
+                var dimension = ( 1 === (isWidth = 1 - isWidth) ? 'width' : 'height' );
                 return Math.floor(Number(coord) * scallingFactor[dimension]);
             }
 
@@ -13,16 +13,16 @@ function scaleImageMap(){
         }
 
         var scallingFactor = {
-            width  : image.width  / image.naturalWidth,
-            height : image.height / image.naturalHeight
+            width: image.width / image.naturalWidth,
+            height: image.height / image.naturalHeight
         };
 
         cachedAreaCoordsArray.forEach(resizeAreaTag);
     }
 
-    function getCoords(e){
+    function getCoords(e) {
         //Normalize coord-string to csv format without any space chars
-        return e.coords.replace(/ *, */g,',').replace(/ +/g,',');
+        return e.coords.replace(/ *, */g, ',').replace(/ +/g, ',');
     }
 
     function debounce() {
@@ -30,7 +30,7 @@ function scaleImageMap(){
         timer = setTimeout(resizeMap, 250);
     }
 
-    function start(){
+    function start() {
         if ((image.width !== image.naturalWidth) || (image.height !== image.naturalHeight)) {
             resizeMap();
         }
@@ -43,25 +43,25 @@ function scaleImageMap(){
     //    document.addEventListener('fullscreenchange', resizeMap,  false);
     //}
 
-    function beenHere(){
+    function beenHere() {
         return ('function' === typeof map._resize);
     }
 
-    function setup(){
-        areas                 = map.getElementsByTagName('area');
+    function setup() {
+        areas = map.getElementsByTagName('area');
         cachedAreaCoordsArray = Array.prototype.map.call(areas, getCoords);
-        image                 = document.querySelector('img[usemap="#'+map.name+'"]');
-        map._resize           = resizeMap; //Bind resize method to HTML map element
+        image = document.querySelector('img[usemap="#' + map.name + '"]');
+        map._resize = resizeMap; //Bind resize method to HTML map element
     }
 
     var
     /*jshint validthis:true */
-        map   = this,
+        map = this,
         areas = null, cachedAreaCoordsArray = null, image = null, timer = null;
 
-    if (!beenHere()){
+    if (!beenHere()) {
         setup();
-        console.log("areas's length: "+areas.length);
+        console.log("areas's length: " + areas.length);
         //addEventListeners();
         start();
     } else {
@@ -69,11 +69,45 @@ function scaleImageMap(){
     }
 }
 
-function getCurrentImage(){
-    return "getCurrentImage for djzhang";
+function factory() {
+    function init(element) {
+        if (!element.tagName) {
+            throw new TypeError('Object is not a valid DOM element');
+        } else if ('MAP' !== element.tagName.toUpperCase()) {
+            throw new TypeError('Expected <MAP> tag, found <' + element.tagName + '>.');
+        }
+
+        scaleImageMap.call(element);
+    }
+
+    return function imageMapResizeF(target) {
+        switch (typeof(target)) {
+            case 'undefined':
+            case 'string':
+                Array.prototype.forEach.call(document.querySelectorAll(target || 'map'), init);
+                break;
+            case 'object':
+                init(target);
+                break;
+            default:
+                throw new TypeError('Unexpected data type (' + typeof target + ').');
+        }
+    };
+}
+
+function imageMapResize() {
+    var maps = document.getElementsByTagName('map');
+    console.log("maps length: " + maps.length);
+    //console.log("map[0]: "+ maps[0]);
+    //maps.forEach(scaleImageMap);
+    //this.filter(maps).each(scaleImageMap).end();
+    //maps.map(factory);
+    Array.prototype.slice.call(maps).forEach(function (entry) {
+        console.log(entry.tagName);
+        scaleImageMap.call(entry);
+    });
 }
 
 module.exports = {
-    scaleImageMap: scaleImageMap,
-    getCurrentImage: getCurrentImage
+    imageMapResize: imageMapResize
 };
