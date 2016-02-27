@@ -24,8 +24,13 @@ function resizeMap() {
     cachedAreaCoordsArray.forEach(resizeAreaTag);
 }
 
+function getCurrentImage(){
+    return "getCurrentImage for djzhang";
+}
+
 module.exports = {
-    addStyleLink: resizeMap
+    addStyleLink: resizeMap,
+    getCurrentImage: getCurrentImage
 };
 },{}],2:[function(require,module,exports){
 function Bridge() {
@@ -176,7 +181,7 @@ window.onload = function() {
     if (typeof define === 'function' && define.amd) {
         define([],factory);
     } else if (typeof module === 'object' && typeof module.exports === 'object'){
-        module.exports = factory(); //Node for browserfy
+        module.exports = new factory(); //Node for browserfy
     } else {
         window.imageMapResize = factory();
     }
@@ -269,6 +274,8 @@ bridge.registerListener( "setDecorOffset", function( payload ) {
 
 },{"./bridge":2,"./transformer":7}],6:[function(require,module,exports){
 var bridge = require("./bridge");
+var factory = require("./imageMapResizer");
+var mapCoordsResizer = require("./MapCoordsResizer");
 
 function Tagya() {
 }
@@ -301,7 +308,8 @@ function scale(coord){
 // 460,100
 // 800,1280
 setPlayer = function (levelNo, hValue) {
-    var message = document.getElementsByTagName('html')[0].innerHTML;
+    var message = mapCoordsResizer.getCurrentImage();
+    //var message = document.getElementsByTagName('html')[0].innerHTML;
     alert(message);
 
     var level = 'L' + levelNo;
@@ -365,7 +373,7 @@ getLevelHeight = function (levelNo) {
 
 module.exports = new Tagya();
 
-},{"./bridge":2}],7:[function(require,module,exports){
+},{"./MapCoordsResizer":1,"./bridge":2,"./imageMapResizer":3}],7:[function(require,module,exports){
 function Transformer() {
 }
 

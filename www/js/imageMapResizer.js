@@ -108,7 +108,7 @@
     if (typeof define === 'function' && define.amd) {
         define([],factory);
     } else if (typeof module === 'object' && typeof module.exports === 'object'){
-        module.exports = factory(); //Node for browserfy
+        module.exports = new factory(); //Node for browserfy
     } else {
         window.imageMapResize = factory();
     }

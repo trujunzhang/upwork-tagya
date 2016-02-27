@@ -23,6 +23,11 @@ function resizeMap() {
     cachedAreaCoordsArray.forEach(resizeAreaTag);
 }
 
+function getCurrentImage(){
+    return "getCurrentImage for djzhang";
+}
+
 module.exports = {
-    addStyleLink: resizeMap
+    addStyleLink: resizeMap,
+    getCurrentImage: getCurrentImage
 };
