@@ -143,7 +143,7 @@ public class CommunicationBridge {
 
         @Override
         public boolean onConsoleMessage(@NonNull ConsoleMessage consoleMessage) {
-            Log.d("WikipediaWeb", consoleMessage.sourceId() + ":" + consoleMessage.lineNumber() + " - " + consoleMessage.message());
+            Log.d("Tagya", consoleMessage.sourceId() + ":" + consoleMessage.lineNumber() + " - " + consoleMessage.message());
             return true;
         }
     }

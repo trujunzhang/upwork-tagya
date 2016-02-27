@@ -61,6 +61,7 @@ function scaleImageMap(){
 
     if (!beenHere()){
         setup();
+        console.log("areas's length: "+areas.length);
         //addEventListeners();
         start();
     } else {

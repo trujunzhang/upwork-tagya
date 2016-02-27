@@ -49,7 +49,7 @@ function scaleImageMap(){
     }
 
     function setup(){
-        areas                 = map.getElementsByTagName('area');
+        areas                 = document.getElementsByTagName('area');
         cachedAreaCoordsArray = Array.prototype.map.call(areas, getCoords);
         image                 = document.querySelector('img[usemap="#'+map.name+'"]');
         map._resize           = resizeMap; //Bind resize method to HTML map element
@@ -62,6 +62,7 @@ function scaleImageMap(){
 
     if (!beenHere()){
         setup();
+        console.log("areas's length: "+areas.length);
         //addEventListeners();
         start();
     } else {
@@ -116,131 +117,6 @@ window.onload = function() {
     module.exports.sendMessage( "DOMLoaded", {} );
 };
 },{}],3:[function(require,module,exports){
-/*! Image Map Resizer
- *  Desc: Resize HTML imageMap to scaled image.
- *  Copyright: (c) 2014-15 David J. Bradshaw - dave@bradshaw.net
- *  License: MIT
- */
-
-(function(){
-    'use strict';
-
-    function scaleImageMap(){
-
-        function resizeMap() {
-            function resizeAreaTag(cachedAreaCoords,idx){
-                function scale(coord){
-                    var dimension = ( 1 === (isWidth = 1-isWidth) ? 'width' : 'height' );
-                    return Math.floor(Number(coord) * scallingFactor[dimension]);
-                }
-
-                var isWidth = 0;
-
-                areas[idx].coords = cachedAreaCoords.split(',').map(scale).join(',');
-            }
-
-            var scallingFactor = {
-                width  : image.width  / image.naturalWidth,
-                height : image.height / image.naturalHeight
-            };
-
-            cachedAreaCoordsArray.forEach(resizeAreaTag);
-        }
-
-        function getCoords(e){
-            //Normalize coord-string to csv format without any space chars
-            return e.coords.replace(/ *, */g,',').replace(/ +/g,',');
-        }
-
-        function debounce() {
-            clearTimeout(timer);
-            timer = setTimeout(resizeMap, 250);
-        }
-
-        function start(){
-            if ((image.width !== image.naturalWidth) || (image.height !== image.naturalHeight)) {
-                resizeMap();
-            }
-        }
-
-        function addEventListeners(){
-            image.addEventListener('onload',  resizeMap, false); //Detect late image loads in IE11
-            window.addEventListener('focus',  resizeMap, false); //Cope with window being resized whilst on another tab
-            window.addEventListener('resize', debounce,  false);
-            document.addEventListener('fullscreenchange', resizeMap,  false);
-        }
-
-        function beenHere(){
-            return ('function' === typeof map._resize);
-        }
-
-        function setup(){
-            areas                 = map.getElementsByTagName('area');
-            cachedAreaCoordsArray = Array.prototype.map.call(areas, getCoords);
-            image                 = document.querySelector('img[usemap="#'+map.name+'"]');
-            map._resize           = resizeMap; //Bind resize method to HTML map element
-        }
-
-        var
-            /*jshint validthis:true */
-            map   = this,
-            areas = null, cachedAreaCoordsArray = null, image = null, timer = null;
-
-        if (!beenHere()){
-            setup();
-            addEventListeners();
-            start();
-        } else {
-            map._resize(); //Already setup, so just resize map
-        }
-    }
-
-
-
-    function factory(){
-        function init(element){
-            if(!element.tagName) {
-                throw new TypeError('Object is not a valid DOM element');
-            } else if ('MAP' !== element.tagName.toUpperCase()) {
-                throw new TypeError('Expected <MAP> tag, found <'+element.tagName+'>.');
-            }
-
-            scaleImageMap.call(element);
-        }
-
-        return function imageMapResizeF(target){
-            switch (typeof(target)){
-                case 'undefined':
-                case 'string':
-                    Array.prototype.forEach.call(document.querySelectorAll(target||'map'),init);
-                    break;
-                case 'object':
-                    init(target);
-                    break;
-                default:
-                    throw new TypeError('Unexpected data type ('+typeof target+').');
-            }
-        };
-    }
-
-    if (typeof define === 'function' && define.amd) {
-        define([],factory);
-    } else if (typeof module === 'object' && typeof module.exports === 'object'){
-        module.exports = new factory(); //Node for browserfy
-    } else {
-        window.imageMapResize = factory();
-    }
-
-
-    if('jQuery' in window) {
-        jQuery.fn.imageMapResize = function $imageMapResizeF(){
-            return this.filter('map').each(scaleImageMap).end();
-        };
-    }
-
-})();
-
-},{}],4:[function(require,module,exports){
 var bridge = require("./bridge");
 
 function addStyleLink(href) {
@@ -263,7 +139,7 @@ bridge.registerListener("injectStyles", function (payload) {
 module.exports = {
     addStyleLink: addStyleLink
 };
-},{"./bridge":2}],5:[function(require,module,exports){
+},{"./bridge":2}],4:[function(require,module,exports){
 var bridge = require( "./bridge" );
 var transformer = require("./transformer");
 
@@ -317,9 +193,8 @@ bridge.registerListener( "setDecorOffset", function( payload ) {
     transformer.setDecorOffset(payload.offset);
 } );
 
-},{"./bridge":2,"./transformer":7}],6:[function(require,module,exports){
+},{"./bridge":2,"./transformer":6}],5:[function(require,module,exports){
 var bridge = require("./bridge");
-var factory = require("./imageMapResizer");
 var mapCoordsResizer = require("./MapCoordsResizer");
 
 function Tagya() {
@@ -421,7 +296,7 @@ getLevelHeight = function (levelNo) {
 
 module.exports = new Tagya();
 
-},{"./MapCoordsResizer":1,"./bridge":2,"./imageMapResizer":3}],7:[function(require,module,exports){
+},{"./MapCoordsResizer":1,"./bridge":2}],6:[function(require,module,exports){
 function Transformer() {
 }
 
@@ -452,4 +327,4 @@ Transformer.prototype.setDecorOffset = function(offset) {
 };
 
 module.exports = new Transformer();
-},{}]},{},[2,5,6,4,7,1,3]);
+},{}]},{},[2,4,5,3,6,1]);

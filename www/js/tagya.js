@@ -1,5 +1,4 @@
 var bridge = require("./bridge");
-var factory = require("./imageMapResizer");
 var mapCoordsResizer = require("./MapCoordsResizer");
 
 function Tagya() {

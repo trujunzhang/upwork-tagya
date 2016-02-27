@@ -6,7 +6,7 @@ module.exports = function (grunt) {
         "js/loader.js",
         "js/transformer.js",
         "js/MapCoordsResizer.js",
-        "js/imageMapResizer.js"
+        //"js/imageMapResizer.js"
     ];
     var allHTMLFiles = [
         "index.html"
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
                         "js/loader.js",
                         "js/transformer.js",
                         "js/MapCoordsResizer.js",
-                        "js/imageMapResizer.js",
+                        //"js/imageMapResizer.js",
                     ]
                 }
             }
