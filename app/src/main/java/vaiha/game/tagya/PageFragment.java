@@ -65,6 +65,6 @@ public class PageFragment extends Fragment implements BackPressedHandler {
 
     @Override
     public boolean onBackPressed() {
-        return false;
+        return true;
     }
 }

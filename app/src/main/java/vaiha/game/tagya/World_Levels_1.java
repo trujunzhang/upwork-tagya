@@ -144,4 +144,10 @@ public class World_Levels_1 extends AppCompatActivity {
         trans.commit();
     }
 
+    // Note: back button first handled in {@link #onOptionsItemSelected()};
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
 }
