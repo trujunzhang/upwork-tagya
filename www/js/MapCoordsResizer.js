@@ -109,13 +109,10 @@ function imageMapResize() {
         scaleImageMap.call(entry);
     });
 
-    var message = document.getElementsByTagName('html')[0].innerHTML;
-    alert(message);
+    //var message = document.getElementsByTagName('html')[0].innerHTML;
+    //alert(message);
 
-    function sendMessaage(){
-        bridge.sendMessage( "DOMLoaded", {} );
-    }
-    //setTimeout(sendMessaage, 1250);
+    bridge.sendMessage( "imageMapResize", {} );
 }
 
 module.exports = {

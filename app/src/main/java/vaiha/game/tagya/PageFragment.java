@@ -61,15 +61,6 @@ public class PageFragment extends Fragment implements BackPressedHandler {
         bridge = new CommunicationBridge(webView, "file:///android_asset/index.html");
 
         bridge.injectStyleBundle(StyleBundle.getAvailableBundle(StyleBundle.BUNDLE_PAGEVIEW));
-
-        JSONObject wrapper = new JSONObject();
-        try {
-            wrapper.put("levelNo", "180");
-            bridge.sendMessage("injectPlayerLevel", wrapper);
-        } catch (JSONException e) {
-            L.logRemoteErrorIfProd(e);
-        }
-
     }
 
     @Override

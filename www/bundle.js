@@ -110,13 +110,10 @@ function imageMapResize() {
         scaleImageMap.call(entry);
     });
 
-    var message = document.getElementsByTagName('html')[0].innerHTML;
-    alert(message);
+    //var message = document.getElementsByTagName('html')[0].innerHTML;
+    //alert(message);
 
-    function sendMessaage(){
-        bridge.sendMessage( "DOMLoaded", {} );
-    }
-    //setTimeout(sendMessaage, 1250);
+    bridge.sendMessage( "imageMapResize", {} );
 }
 
 module.exports = {
@@ -125,18 +122,17 @@ module.exports = {
 
 // FIXME: Move this to somewhere else, eh?
 window.onload = function() { // step1
-    console.log("window onload");
     bridge.sendMessage( "DOMLoaded", {} );
 };
 
+window.onpageshow = function(){ // step2
+};
+
 window.onresize = function(){// step3
-    console.log("window onresize");
     setTimeout(imageMapResize, 1250);
 };
 
-window.onpageshow = function(){ // step2
-    console.log("window onpageshow");
-};
+
 
 
 
@@ -268,9 +264,9 @@ function Tagya() {
 }
 
 bridge.registerListener("injectPlayerLevel", function (payload) {
-    //var levelNo = payload.levelNo;
-    //var hValue = getLevelHeight(levelNo);
-    //setPlayer(levelNo, hValue);
+    var levelNo = payload.levelNo;
+    var hValue = getLevelHeight(levelNo);
+    setPlayer(levelNo, hValue);
 
     //debugImage();
 });
@@ -295,8 +291,8 @@ function scale(coord){
 // 460,100
 // 800,1280
 setPlayer = function (levelNo, hValue) {
-    //var message = document.getElementsByTagName('html')[0].innerHTML;
-    //alert(message);
+    var message = document.getElementsByTagName('html')[0].innerHTML;
+    alert(message);
 
     var level = 'L' + levelNo;
     var p1pin = document.getElementById("p1pin");

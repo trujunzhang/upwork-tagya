@@ -20,6 +20,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import vaiha.game.tagya.util.log.L;
+
 import static vaiha.game.tagya.util.UriUtil.decodeURL;
 
 /**
@@ -62,6 +64,18 @@ public class CommunicationBridge {
                     //
                     //
                     CommunicationBridge.this.webView.loadUrl(jsString);
+                }
+            }
+        });
+        this.addListener("imageMapResize", new JSEventListener() {
+            @Override
+            public void onMessage(String messageType, JSONObject messagePayload) {
+                JSONObject wrapper = new JSONObject();
+                try {
+                    wrapper.put("levelNo", "180");
+                    CommunicationBridge.this.sendMessage("injectPlayerLevel", wrapper);
+                } catch (JSONException e) {
+                    L.logRemoteErrorIfProd(e);
                 }
             }
         });
