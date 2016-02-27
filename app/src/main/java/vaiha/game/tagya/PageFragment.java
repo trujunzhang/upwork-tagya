@@ -60,7 +60,7 @@ public class PageFragment extends Fragment implements BackPressedHandler {
         // creating a seizure-inducing effect, or at the very least, a migraine with aura).
         bridge = new CommunicationBridge(webView, "file:///android_asset/index.html");
 
-//        bridge.injectStyleBundle(StyleBundle.getAvailableBundle(StyleBundle.BUNDLE_PAGEVIEW));
+        bridge.injectStyleBundle(StyleBundle.getAvailableBundle(StyleBundle.BUNDLE_PAGEVIEW));
     }
 
     @Override
